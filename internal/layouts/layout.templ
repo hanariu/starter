@@ -1,0 +1,87 @@
+package layout
+
+import (
+	"github.com/hanariu/hanariu/pkg/hanariu"
+	"os"
+	"path/filepath"
+)
+
+templ Layout(dark string) {
+	<!DOCTYPE html>
+	<html lang="en" class={ getLayoutClass(dark) }>
+		<head>
+			<meta charset="UTF-8"/>
+			<title>Basic starter boilerplate for Hanariu</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1"/>
+			<meta name="description" content="Basic starter for Hanariu - Templ Atomic Design System."/>
+			for _, item := range getStyles() {
+				@makeStyle(item)
+			}
+		</head>
+		<body class="h-full w-full dark:bg-primary-800">
+			<div id="content">
+				{ children... }
+			</div>
+			for _, item := range getScripts() {
+				@makeScript(item)
+			}
+		</body>
+	</html>
+}
+
+func assetsWalkMatch(root, pattern string) ([]string, error) {
+	var matches []string
+	err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+		if err != nil {
+			return err
+		}
+		if info.IsDir() {
+			return nil
+		}
+		if matched, err := filepath.Match(pattern, filepath.Base(path)); err != nil {
+			return err
+		} else if matched {
+			matches = append(matches, filepath.Base(path))
+		}
+		return nil
+	})
+	if err != nil {
+		return nil, err
+	}
+	return matches, nil
+}
+
+func getScripts() []string {
+	files, _ := assetsWalkMatch("./web/static/assets", "*.js")
+	return files
+}
+func getStyles() []string {
+	files, _ := assetsWalkMatch("./web/static/assets", "*.css")
+	return files
+}
+
+func makeScript(file string) templ.Component {
+	attrs := hanariu.Attrs{
+		"defer": "",
+		"src":   "/static/assets/" + file,
+	}
+	return hanariu.CreateComponent("script", "", attrs, false)
+}
+
+func makeStyle(file string) templ.Component {
+	attrs := hanariu.Attrs{
+		"rel":   "stylesheet",
+		"media": "screen",
+		"href":  "/static/assets/" + file,
+	}
+	return hanariu.CreateComponent("link", "", attrs, true)
+}
+
+func getLayoutClass(dark string) string {
+	classes := "h-full"
+	if dark == "dark" {
+		classes += " dark"
+	}
+	return classes
+}
+

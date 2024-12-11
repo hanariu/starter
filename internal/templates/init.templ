@@ -1,0 +1,13 @@
+package templates
+
+import (
+	layouts "starter/internal/layouts"
+	pages "starter/internal/pages"
+)
+
+templ Init(dark string) {
+	@layouts.Layout(dark) {
+		@pages.Home()
+	}
+}
+
