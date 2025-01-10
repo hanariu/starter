@@ -4,5 +4,5 @@ github.com/go-mods/initials v0.0.0-20240904191632-aff6f3be89ad h1:6hxxC/gIoRud30
 github.com/go-mods/initials v0.0.0-20240904191632-aff6f3be89ad/go.mod h1:oVkbpeb26u6G9TiXVfDm9rIrZof2BwOVeQMbzpio5VA=
 github.com/google/go-cmp v0.6.0 h1:ofyhxvXcZhMsU5ulbFiLKl/XBFqE1GSq7atu8tAmTRI=
 github.com/google/go-cmp v0.6.0/go.mod h1:17dUlkBOakJ0+DkrSSNjCkIjxS6bF9zb3elmeNGIjoY=
-github.com/hanariu/hanariu v0.1.0 h1:I2ybGGSeCcKXVc7CxlR20rJHaJVucIW11i3JuBKSCuc=
-github.com/hanariu/hanariu v0.1.0/go.mod h1:Szx0Z1qHSXHuyIuClwSXPX6sYM3k9ugzI+M2Xmo1c1Y=
+github.com/hanariu/hanariu v0.1.1 h1:h+saLoC3sl2bIko8ybOoWfqb0i5Wrn5e18Y3fzSGpfc=
+github.com/hanariu/hanariu v0.1.1/go.mod h1:GQvVdOl5fLXuKimTvsMGGUlUl0VicngBWr5gsef47bA=

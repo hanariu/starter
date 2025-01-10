@@ -62,9 +62,9 @@ func Home() templ.Component {
 			}
 			templ_7745c5c3_Err = atoms.Button(
 				&atoms.ButtonBosons{
-					Size:     "xl",
-					Title:    "Github repository",
-					Disabled: true,
+					Tag:   "a",
+					Size:  "xl",
+					Title: "Github repository",
 					Attrs: hanariu.Attrs{
 						"href": "https://github.com/hanariu/hanariu",
 					},
